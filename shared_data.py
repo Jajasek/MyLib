@@ -18,7 +18,9 @@ class SharedData:
         pass
 
     def delete(self):
-        self.instances.remove(self)
+        self.instances[self.ID].remove(self)
+        if not self.instances[self.ID]:
+            del self.instances[self.ID]
 
     def __setattr__(self, key, value, update=True):
         old = getattr(self, key, None)
